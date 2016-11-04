@@ -8,6 +8,7 @@ class CampaignTest < Minitest::Test
 
   end
 
+##SS
 
   def test_campaign_exists
     assert Campaign
