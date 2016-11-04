@@ -2,44 +2,61 @@
 <html>
     <head>
         <meta charset='utf-8'>
-        <title>[APP NAME HERE]</title>
+        <title>2016 Election Battle</title>
 
-        <link href='css/main.css' rel='stylesheet' type='text/css'>
+        <link href='normalize.scss' rel='stylesheet' type='text/css'>
+        <link href='style.css' rel='stylesheet' type='text/css'>
+
     </head>
     <body>
 
         <header>
-            <h1>[APP NAME HERE]</h1>
+            <h1>2016 Election Battle</h1>
         </header>
 
         <nav>
             <ul>
-                <li><a class='show-???-list' href='#'>Show List of [WHAT?]</a></li>
-                <!-- what other nav do we need? -->
+                <li><a class='show-candidate-list' href='#'>List of Candidates</a></li>
+                <li><a class='show-create-candidates' href='#'>Create Candidates</a></li>
+                <li><a class='show-create-candidate' href='#'>Create Campaign</a></li>
+                <li><a class='show-old-campaign' href='#'>See Old Campaigns</a></li>
                 <!-- how can we make a specific section below visible? HINT: look at the _nav.scss file! -->
             </ul>
         </nav>
 
         <main>
-            <section class='list-of-???'>
-                <h2>List of [WHAT?]</h2>
-                <ul></ul>
+            <section class='list-of-candidates'>
+                <h2>List of Candidates</h2>
+                <ul> </ul>
             </section>
 
             <!-- what other sections do we need? -->
 
-            <section class='create-a-???'>
-                <h2>Create a New [WHAT?]</h2>
+            <section class='create-a-candidate'>
+                <h2>Create a New Candidate</h2>
                 <form>
                     <aside>
                         <label for='new-name'>Name</label>
                         <input type='text' id='name' name='name' required>
                     </aside>
-
-                    <!-- What else do we need? -->
-
                     <aside>
-                        <input type='submit' value='Create [WHAT?]'>
+                        <label for='new-avatar'>Avatar</label>
+                        <input type='text' id='avatar' name='avatar' required>
+                    </aside>
+                    <aside>
+                        <label for='new-intelligence'>Intelligence</label>
+                        <input type='number' id='intelligence' name='intelligence' min='0' max='10' value='0' required>
+                    </aside>
+                    <aside>
+                        <label for='new-charisma'>Charisma</label>
+                        <input type='number' id='charisma' name='charisma' min='0' max='10' value='0' required>
+                    </aside>
+                    <aside>
+                        <label for='new-willpower'>Willpower</label>
+                        <input type='number' id='willpower' name='willpower' min='0' max='10' value='0' required>
+                    </aside>
+                    <aside>
+                        <input type='submit' value='Create Candidate'>
                     </aside>
                 </form>
             </section>
