@@ -3,6 +3,7 @@ require_relative "test_helper"
 class AppTest < Minitest::Test
   include Rack::Test::Methods
 
+
   def app
     App
   end
@@ -30,20 +31,22 @@ class AppTest < Minitest::Test
     assert last_response.ok?
     candidates = JSON.parse(last_response.body)
     #assert_equal 3, candidates.size
-    assert_equal "Alex", candidates.first["name"]
+    assert_equal "Chris", candidates.first["name"]
   end
 
   def test_update_candidate
+    skip
     response = patch "/candidates?name=Alex&name_update=Obama"
     #payload = JSON.parse(response.body)
     assert_equal "Obama",response.body
   end
 
   def test_get_specific_candidate
-    skip
-    response = get "/specific_candidate?name=Ben"
+    response = get "/specific_candidate?name=Chris"
+    binding.pry
     payload = JSON.parse(response.body)
-    assert_equal "Ben", payload["name"]
+
+    assert_equal "Alex", payload["name"]
   end
 
 end
