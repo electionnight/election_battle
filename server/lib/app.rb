@@ -60,7 +60,7 @@ class App < Sinatra::Base
     Candidate.all.to_json
   end
 
-  get "/specific_candidates" do
+  get "/specific_candidate" do
     content_type "application/json"
     Candidate.find_by(name: params["name"]).to_json
   end
@@ -72,7 +72,7 @@ class App < Sinatra::Base
 
   patch "/candidates" do
     content_type "application/json"
-    Candidate.find_by(name: params["name"]).update(name: params["name_update"])
+    Candidate.find_by(id: params["id"]).update(name: params["name_update"])
   end
 
   delete "/candidates" do
