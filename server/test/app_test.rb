@@ -36,17 +36,23 @@ class AppTest < Minitest::Test
 
   def test_update_candidate
     skip
-    response = patch "/candidates?name=Alex&name_update=Obama"
+    response = patch "/candidate?name=Chris&name_update=Obama"
     #payload = JSON.parse(response.body)
-    assert_equal "Obama",response.body
+    assert_equal "Obama",response
   end
 
   def test_get_specific_candidate
     response = get "/specific_candidate?name=Chris"
-    binding.pry
     payload = JSON.parse(response.body)
 
-    assert_equal "Alex", payload["name"]
+    assert_equal "Chris", payload["name"]
+  end
+
+  def test_get_specific_candidate
+    delete "/candidate?id=35"
+
+
+    assert_equal nil, Candidate.all
   end
 
 end
