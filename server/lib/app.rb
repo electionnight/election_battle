@@ -6,6 +6,7 @@ require 'sinatra'
 require 'json'
 
 require_relative 'database'
+require_relative 'candidate'
 
 class App < Sinatra::Base
   # Serve any HTML/CSS/JS from the client folder
@@ -30,6 +31,33 @@ class App < Sinatra::Base
   get '/api' do
     { msg: 'The server is running' }.to_json
   end
+
+  #
+  post "/candidates" do
+    text = request.body.read
+    employee_info = JSON.parse(text)
+    content_type("application/json")
+    employee = Candidate.new(employee_info)
+
+    if employee.save
+      status 201
+      employee.to_json
+    else
+      status 422
+      {
+        errors: {
+          full_messages: employee.errors.full_messages,
+          messages: employee.errors.messages
+        }
+      }.to_json
+    end
+  end
+
+  get "/candidates" do
+    content_type("application/json")
+    Candidate.all.to_json
+  end
+
 
   # If this file is run directly boot the webserver
   run! if app_file == $PROGRAM_NAME

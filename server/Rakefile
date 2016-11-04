@@ -86,6 +86,7 @@ def import_active_record_tasks(default_rake_app)
     # import task
     Rake::Task.define_task(task.name) { task.invoke }
   end
+
 end
 
 import_active_record_tasks(Rake.application)
