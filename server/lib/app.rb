@@ -7,6 +7,8 @@ require 'json'
 
 require_relative 'database'
 require_relative 'candidate'
+require_relative 'campaign'
+
 
 class App < Sinatra::Base
   # Serve any HTML/CSS/JS from the client folder
@@ -56,6 +58,27 @@ class App < Sinatra::Base
   get "/candidates" do
     content_type("application/json")
     Candidate.all.to_json
+  end
+
+  get "/specific_candidates" do
+    content_type "application/json"
+    Candidate.find_by(name: params["name"]).to_json
+  end
+
+  get "/campaigns" do
+    content_type "application/json"
+    Campaign.all.to_json
+  end
+
+  patch "/candidates" do
+    content_type "application/json"
+    Candidate.find_by(name: params["name"]).update(name: params["name_update"])
+  end
+
+  delete "/candidates" do
+    content_type "application/json"
+    a = Candidate.where(name: params["name"])
+    a.delete_all
   end
 
 
