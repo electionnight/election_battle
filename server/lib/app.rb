@@ -86,9 +86,9 @@ class App < Sinatra::Base
     Candidate.all.to_json
   end
 
-  get "/specific_candidate" do
+  get "/specific_candidate/:id" do
     content_type "application/json"
-    Candidate.find_by(name: params["name"]).to_json
+    Candidate.find_by(id: params["id"]).to_json
   end
 
   get "/campaigns" do
@@ -96,15 +96,40 @@ class App < Sinatra::Base
     Campaign.all.to_json
   end
 
-  patch "/candidate" do
+  patch "/candidate/:id/intelligence" do
     content_type "application/json"
-    Candidate.find_by(name: params["name"]).update(name: params["name_update"])
+    Candidate.find_by(id: params["id"]).update(intelligence: params["intelligence"])
   end
 
-  delete "/candidate" do
+  patch "/candidate/:id/willpower" do
     content_type "application/json"
-    a = Candidate.where(id: params["id"])
-    a.delete_all
+    Candidate.find_by(id: params["id"]).update(willpower: params["update"])
+  end
+
+  patch "/candidate/:id/charisma" do
+    content_type "application/json"
+    Candidate.find_by(id: params["id"]).update(charisma: params["update"])
+  end
+
+  patch "/candidate/:id/name" do
+    content_type "application/json"
+    Candidate.find_by(id: params["id"]).update(name: params["update"])
+  end
+
+  patch "/candidate/:id/image_url" do
+    content_type "application/json"
+    Candidate.find_by(id: params["id"]).update(image_url: params["update"])
+  end
+
+  delete "/candidate/:id" do
+   candidate = Candidate.find_by(id: params["id"])
+   if candidate
+     candidate.delete
+   else
+     status 404
+     {message: "Candidate with id ##{params["id"]} does not exist"}.to_json
+   end
+
   end
 
 

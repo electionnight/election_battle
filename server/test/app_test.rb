@@ -26,7 +26,6 @@ class AppTest < Minitest::Test
     assert_equal "Chris", Candidate.last.name
   end
 
-  focus
   def test_create_campaign
     header "content_type", "application/json"
     a = Candidate.create!(name: "Alex", image_url: "http//", intelligence: 5, charisma: 6, willpower: 2, campaigns_won: 1)
@@ -40,8 +39,6 @@ class AppTest < Minitest::Test
     post "/campaign", payload.to_json
     assert_equal 201, last_response.status
     assert_equal Campaign.last.id, JSON.parse(last_response.body)["id"]
-
-    p JSON.parse(last_response.body)
   end
 
   def test_can_read_all_candidates
@@ -49,30 +46,28 @@ class AppTest < Minitest::Test
     assert last_response.ok?
     candidates = JSON.parse(last_response.body)
     #assert_equal 3, candidates.size
-    assert_equal "Alex", candidates.first["name"]
+    assert_equal Candidate.last.name, candidates.last["name"]
   end
 
   def test_update_candidate
-    skip
-    response = patch "/candidate?name=Chris&name_update=Obama"
-    payload = JSON.parse(response.body)
-    assert_equal "Obama", payload["name"]
+    patch "/candidate/#{Candidate.last.id}/intelligence", intelligence: 8
+    assert_equal 8, Candidate.last["intelligence"]
   end
 
   def test_get_specific_candidate
-    skip
-    response = get "/specific_candidate?name=Alex"
+    response = get "/specific_candidate/#{Candidate.last.id}"
     payload = JSON.parse(response.body)
 
-    assert_equal "Alex", payload["name"]
+    assert_equal Candidate.last.name, payload["name"]
   end
 
   def test_delete_specific_candidate
-    skip
-    delete "/candidate?id=35"
+
+    test_variable = Candidate.last.id
+    delete "/candidate/#{Candidate.last.id}"
 
 
-    assert_equal nil, Candidate.all
+    assert_equal test_variable - 1, Candidate.last.id
   end
 
 end
