@@ -1,8 +1,8 @@
 require "active_record"
 
 class Campaign < ActiveRecord::Base
-    belongs_to :winning_candidate_id, class_name: "Candidate", foreign_key: :winning_candidate_id
-    belongs_to :losing_candidate_id, class_name: "Candidate", foreign_key: :losing_candidate_id
+    belongs_to :winning_candidate, class_name: "Candidate", foreign_key: :winning_candidate_id
+    belongs_to :losing_candidate, class_name: "Candidate", foreign_key: :losing_candidate_id
 
     def assign_winning_candidate(new_candidate)
       self["winning_candidate_id"] = new_candidate["id"]

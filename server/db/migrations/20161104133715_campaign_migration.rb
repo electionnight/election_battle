@@ -5,7 +5,7 @@ class CampaignMigration < ActiveRecord::Migration[5.0]
     create_table :campaigns do |t|
       t.integer :winning_candidate_id
       t.integer :losing_candidate_id
-      t.timestamps
+      t.timestamps null:false
     end
   end
 end
