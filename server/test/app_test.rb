@@ -20,7 +20,7 @@ class AppTest < Minitest::Test
       campaigns_won: 0
     }
 
-    post "/candidate", payload.to_json
+    post "/candidates", payload.to_json
     assert_equal 201, last_response.status
     assert_equal Candidate.last.id, JSON.parse(last_response.body)["id"]
     assert_equal "Chris", Candidate.last.name
