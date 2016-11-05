@@ -14,13 +14,12 @@
     })
     .done(function(data){
       console.log(data);
-      // window.election.(data)
+      window.election.createListOfCandidates();
     })
     .fail(function(data){
       console.log('fail');
     })
   };
-
 
   function postCandidate(aboutCandidate) {
     var candidateName = aboutCandidate.name
@@ -55,5 +54,5 @@
   // window.election.postCandidate = postCandidate;
 
 window.election.postCandidate = postCandidate;
-
+window.election.getCandidates = getCandidates;
 }());
