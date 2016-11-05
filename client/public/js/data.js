@@ -8,13 +8,10 @@
       url: '/candidates',
       method: 'GET',
       dataType: 'json',
-      header: {
-        'Content-Type': 'application/json'
-      }
     })
     .done(function(data){
       console.log(data);
-      window.election.createListOfCandidates();
+      window.election.createListOfCandidates(data);
     })
     .fail(function(data){
       console.log('fail');
