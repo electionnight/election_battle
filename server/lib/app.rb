@@ -34,22 +34,48 @@ class App < Sinatra::Base
     { msg: 'The server is running' }.to_json
   end
 
-  #
-  post "/candidates" do
+  post "/candidate" do
     text = request.body.read
-    employee_info = JSON.parse(text)
+    candidate_info = JSON.parse(text)
     content_type("application/json")
-    employee = Candidate.new(employee_info)
+    candidate = Candidate.new(candidate_info)
 
-    if employee.save
+    if candidate.save
       status 201
-      employee.to_json
+      candidate.to_json
     else
       status 422
       {
         errors: {
-          full_messages: employee.errors.full_messages,
-          messages: employee.errors.messages
+          full_messages: candidate.errors.full_messages,
+          messages: candidate.errors.messages
+        }
+      }.to_json
+    end
+  end
+
+  post "/campaign" do
+    text = request.body.read
+    campaign_info = JSON.parse(text)
+    content_type("application/json")
+
+    # Lookup candidate ids in the db
+    first_candidate = Candidate.find_by(id: campaign_info["candidate_one_id"])
+    second_candidate = Candidate.find_by(id: campaign_info["candidate_two_id"])
+
+    campaign = Campaign.new
+    campaign.winning_candidate_id = first_candidate.id
+    campaign.losing_candidate_id = second_candidate.id
+
+    if campaign.save
+      status 201
+      campaign.to_json
+    else
+      status 422
+      {
+        errors: {
+          full_messages: campaign.errors.full_messages,
+          messages: campaign.errors.messages
         }
       }.to_json
     end
@@ -80,6 +106,8 @@ class App < Sinatra::Base
     a = Candidate.where(id: params["id"])
     a.delete_all
   end
+
+
 
 
   # If this file is run directly boot the webserver
