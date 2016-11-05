@@ -68,8 +68,9 @@ class App < Sinatra::Base
     array_of_candidates = [first_candidate, second_candidate]
 
     winner = array_of_candidates.sample
-    loser = array_of_candidates.delete(winner)
-    
+    array_of_candidates.delete(winner)
+    loser = array_of_candidates.sample
+
     campaign = Campaign.new
     campaign.winning_candidate_id = winner.id
     campaign.losing_candidate_id = loser.id
