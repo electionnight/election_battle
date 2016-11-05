@@ -66,7 +66,6 @@ class AppTest < Minitest::Test
     test_variable = Candidate.last.id
     delete "/candidate/#{Candidate.last.id}"
 
-
     assert_equal test_variable - 1, Candidate.last.id
   end
 

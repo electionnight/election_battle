@@ -65,10 +65,14 @@ class App < Sinatra::Base
     # Lookup candidate ids in the db
     first_candidate = Candidate.find_by(id: campaign_info["candidate_one_id"])
     second_candidate = Candidate.find_by(id: campaign_info["candidate_two_id"])
+    array_of_candidates = [first_candidate, second_candidate]
 
+    winner = array_of_candidates.sample
+    loser = array_of_candidates.delete(winner)
+    
     campaign = Campaign.new
-    campaign.winning_candidate_id = first_candidate.id
-    campaign.losing_candidate_id = second_candidate.id
+    campaign.winning_candidate_id = winner.id
+    campaign.losing_candidate_id = loser.id
 
     if campaign.save
       status 201
