@@ -63,10 +63,32 @@ class AppTest < Minitest::Test
 
   def test_delete_specific_candidate
 
-    test_variable = Candidate.last.id
+    test_variable = (Candidate.last.id - 5)
     delete "/candidate/#{Candidate.last.id}"
 
-    assert_equal test_variable - 1, Candidate.last.id
+    assert_equal test_variable + 4, Candidate.last.id
+  end
+
+  def test_get_campaigns_for_specific_candidate
+    header "content_type", "application/json"
+
+
+    a = Candidate.create!(name: "Alex", image_url: "http//", intelligence: 5, charisma: 6, willpower: 2, campaigns_won: 1)
+    b = Candidate.create!(name: "Ben", image_url: "http//", intelligence: 6, charisma: 7, willpower: 4, campaigns_won: 2)
+
+    payload = {
+      "candidate_one_id": a.id,
+      "candidate_two_id": b.id
+    }
+
+    post "/campaign", payload.to_json
+    post "/campaign", payload.to_json
+
+
+    response = get "/campaigns/candidate/#{a.id}"
+    payload = JSON.parse(response.body)
+
+    assert_equal Campaign.last.winning_candidate_id, payload
   end
 
 end

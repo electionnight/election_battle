@@ -65,8 +65,8 @@ class App < Sinatra::Base
     # Lookup candidate ids in the db
     first_candidate = Candidate.find_by(id: campaign_info["candidate_one_id"])
     second_candidate = Candidate.find_by(id: campaign_info["candidate_two_id"])
-    array_of_candidates = [first_candidate, second_candidate]
 
+    array_of_candidates = [first_candidate, second_candidate]
     winner = array_of_candidates.sample
     array_of_candidates.delete(winner)
     loser = array_of_candidates.sample
@@ -101,12 +101,6 @@ class App < Sinatra::Base
     Candidate.find_by(id: params["id"]).to_json
   end
 
-  #gets all campaigns
-  get "/campaigns" do
-    content_type "application/json"
-    Campaign.all.to_json
-  end
-
   #change a specific candidate intelligence. the candidate is chosen by id
   patch "/candidate/:id/intelligence" do
     content_type "application/json"
@@ -139,17 +133,28 @@ class App < Sinatra::Base
 
   #delete a specific candidate chosen by id
   delete "/candidate/:id" do
-   candidate = Candidate.find_by(id: params["id"])
-   if candidate
-     candidate.delete
-   else
-     status 404
-     {message: "Candidate with id ##{params["id"]} does not exist"}.to_json
-   end
-
+    candidate = Candidate.find_by(id: params["id"])
+    if candidate
+      candidate.delete
+    else
+      status 404
+      {message: "Candidate with id ##{params["id"]} does not exist"}.to_json
+    end
   end
 
+  #gets all campaigns
+  get "/campaigns" do
+    content_type "application/json"
+    Campaign.all.to_json
+  end
 
+  #get all campaigns for specific candidate
+  get "/campaigns/candidate/:id" do
+    #first_candidate = Candidate.find_by(id: campaign_info["candidate_id"])
+    #columns = [:winning_candidate_id,:]
+    content_type "application/json"
+    Campaign.where(winning_candidate_id: params["id"]).or(Campaign.where(losing_candidate_id: params["id"])).to_json
+  end
 
 
   # If this file is run directly boot the webserver
