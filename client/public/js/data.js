@@ -21,7 +21,7 @@
     })
   };
 
-
+//This is a note to do a merge
   function postCandidate(aboutCandidate) {
     var candidateName = aboutCandidate.name
     var avatar = aboutCandidate.image_url
