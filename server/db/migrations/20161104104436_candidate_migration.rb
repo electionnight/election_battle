@@ -10,8 +10,5 @@ class CandidateMigration < ActiveRecord::Migration[5.0]
       t.integer :willpower
       t.integer :campaigns_won
     end
-
-
-
   end
 end

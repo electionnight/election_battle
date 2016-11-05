@@ -3,6 +3,7 @@ require_relative 'test_helper'
 class CampaignTest < Minitest::Test
   def setup
 
+    Campaign.delete_all
 
     Campaign.create!
 
@@ -16,7 +17,7 @@ class CampaignTest < Minitest::Test
 
   def test_get_all_campaign
     candidates_all = Campaign.all
-    assert_equal candidates_all.first["id"], 1
+    assert_equal candidates_all, 1
   end
 
   def test_assigning_winning_candidate_to_campaign
