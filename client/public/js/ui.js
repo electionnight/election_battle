@@ -1,4 +1,4 @@
- week(function() {
+ (function() {
   'use strict';
 
   window.election = window.election || {};
@@ -29,10 +29,10 @@ $('.create-a-candidate')
     aboutCandidate.willpower = $('#willpower').val();
     console.log('hello');
     window.election.postCandidate(aboutCandidate);
-}
-
-window.election.createCandidates = createCandidates();
+});
 
 
+
+// window.election.createCandidates = createCandidates();
 
 }());

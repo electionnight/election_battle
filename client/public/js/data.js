@@ -3,19 +3,35 @@
 
   window.election = window.election || {};
 
-  function postCandidate(aboutCandidates) {
-  window.election.postCandidate = postCandidate;
+  function getCandidates() {
+    $.ajax({
+      url: '/candidates',
+      method: 'GET',
+      dataType: 'json',
+      header: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .done(function(data){
+      console.log(data);
+      // window.election.(data)
+    })
+    .fail(function(data){
+      console.log('fail');
+    })
+  };
 
+
+  function postCandidate(aboutCandidate) {
     var candidateName = aboutCandidate.name
     var avatar = aboutCandidate.image_url
     var intelligence = aboutCandidate.intelligence
     var charisma = aboutCandidate.charisma
     var willpower = aboutCandidate.willpower
-    console.log(aboutCandidates);
+    console.log(aboutCandidate);
     // do ajax call, url, metho, data json
 
     $.ajax({
-
       url: '/candidates',
       method: 'POST',
       data: JSON.stringify({name: candidateName,
@@ -23,7 +39,6 @@
             intelligence: intelligence,
             charisma: charisma,
             willpower: willpower
-            campaigns-won:
       }),
       headers: {
         'Content-Type': 'application/json'
@@ -35,10 +50,9 @@
     .fail (function handleFail(xhr, errorType) {
       console.log(xhr);
     });
+  };
 
-  });
-
-
+  // window.election.postCandidate = postCandidate;
 
 window.election.postCandidate = postCandidate;
 
