@@ -21,7 +21,6 @@
     })
   };
 
-
   function postCandidate(aboutCandidate) {
     var candidateName = aboutCandidate.name
     var avatar = aboutCandidate.image_url
@@ -55,5 +54,5 @@
   // window.election.postCandidate = postCandidate;
 
 window.election.postCandidate = postCandidate;
-
+window.election.getCandidates = getCandidates;
 }());

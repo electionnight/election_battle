@@ -31,7 +31,23 @@ $('.create-a-candidate')
     window.election.postCandidate(aboutCandidate);
 });
 
+$('.show-candidate-list')
+  .on('click', function listOfCandidates(eventObj) {
+    eventObj.preventDefault();
+    window.election.getCandidates();
+  });
 
+  function createListOfCandidates (data){
+    data.foreach(function addToUl(candidate){
+      $('.list-of-candidates ul')
+      
+    })
+
+
+
+  }
+
+  // function
 
 // window.election.createCandidates = createCandidates();
 
