@@ -14,7 +14,7 @@
     })
     .done(function(data){
       console.log(data);
-      // window.election.(data)
+      window.election.createListOfCandidates();
     })
     .fail(function(data){
       console.log('fail');

@@ -38,9 +38,12 @@ $('.show-candidate-list')
   });
 
   function createListOfCandidates (data){
-    data.foreach(function addToUl(candidate){
+    data.foreach(function (candidate){
       $('.list-of-candidates ul')
-      
+        .append('<li>' + candidate + '</li>');
+
+
+    window.election.getCandidates();
     })
 
 
@@ -50,5 +53,6 @@ $('.show-candidate-list')
   // function
 
 // window.election.createCandidates = createCandidates();
+window.election.createListOfCandidates = createListOfCandidates;
 
 }());
