@@ -402,9 +402,9 @@ template {
 [hidden] {
   display: none; }
 
-body {
+/*body {
   background-image: url("http://www.ecollegetimes.com/wp-content/uploads/2016/10/53801535_xl.jpg");
-  background-size: 100%; }
+  background-size: 100%; }*/
 
 header {
   background-color: #FFFFFF;

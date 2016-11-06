@@ -55,19 +55,12 @@ $('.show-candidate-list')
     })
   }
 
-
-
-    // <li data-id="' + candidate.id + '">' +
-    //             '<img src="' + candidate.image_url + '">' +
-    //              candidate.name +
-    //              '<button class="deleteThisCandidate">Delete</button>' +
-    //              '<button class="updateAtrCandidate">Update</button>' +
-    //           '</li>'
-    //
+$('.list-of-candidates ul')
+  .on('click', )
 
 
 
-  // function
+
 
 // window.election.createCandidates = createCandidates();
 window.election.createListOfCandidates = createListOfCandidates;
