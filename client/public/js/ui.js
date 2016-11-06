@@ -3,20 +3,23 @@
 
   window.election = window.election || {};
 
+  window.election.toggleVisible = function toggleVisible(htmlElement) {
+    htmlElement.toggleClass('visible');
+  }
 
-// $('.show-candidate-list')
-//   .on('click', function showCandidate (event) {
-//     event.preventDefault();
-//     $('.show-candidate-list').toggleClass('visible');
-//     console.log('worked');
-//   });
-//
-//   $('.show-create-candidates')
-//     .on('click', function createCandidate (event) {
-//       event.preventDefault();
-//       $('.show-create-candidates').toggleClass('visible');
-//       console.log('worked');
-//     });
+$('.show-candidate-list')
+  .on('click', function showCandidate (event) {
+    event.preventDefault();
+    $('.list-of-candidates').addClass('visible')
+    // window.election.toggleVisible($('.list-of-candidates'));
+
+  });
+
+  $('.show-create-candidates')
+    .on('click', function createCandidate (event) {
+      event.preventDefault();
+    $('.create-a-candidate').addClass('visible');
+    });
 
 $('.create-a-candidate')
   .on('submit', function createCandidates(eventObj) {
@@ -38,17 +41,12 @@ $('.show-candidate-list')
   });
 
   function createListOfCandidates (data){
-    data.foreach(function (candidate){
+    data.forEach(function (candidate){
       $('.list-of-candidates ul')
         .append('<li>' + candidate + '</li>');
-
-
-    window.election.getCandidates();
     })
 
-
-
-  }
+  };
 
   // function
 
