@@ -11,7 +11,7 @@ header {
   background-color: #FFFFFF;
   border-bottom-color: red; }
 
-h1 {
+/*h1 {
   text-shadow: 1px 1px 8px #0820ff;
   font-weight: bold;
   font-variant: small-caps;
@@ -44,15 +44,15 @@ h2 {
   font-family: times new roman, times, serif;
   line-height: 1;
   margin-top: 17px;
-  padding: 0px; }
+  padding: 0px; }*/
 
 nav ul li {
   display: inline-block; }
 
-section {
+/*section {
   display: none; }
 
 section.visible {
   display: block; }
-
+*/
 /*# sourceMappingURL=style.css.map */

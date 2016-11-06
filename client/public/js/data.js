@@ -35,6 +35,7 @@
             intelligence: intelligence,
             charisma: charisma,
             willpower: willpower
+            
       }),
       headers: {
         'Content-Type': 'application/json'

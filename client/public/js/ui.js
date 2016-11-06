@@ -3,14 +3,15 @@
 
   window.election = window.election || {};
 
-  window.election.toggleVisible = function toggleVisible(htmlElement) {
-    htmlElement.toggleClass('visible');
-  }
+  // window.election.toggleVisible = function toggleVisible(htmlElement) {
+  //   htmlElement.toggleClass('visible');
+
 
 $('.show-candidate-list')
   .on('click', function showCandidate (event) {
     event.preventDefault();
-    $('.list-of-candidates').addClass('visible')
+    $('.list-of-candidates').addClass('visible');
+    $('nav').removeClass('visible');
     // window.election.toggleVisible($('.list-of-candidates'));
 
   });
@@ -41,12 +42,30 @@ $('.show-candidate-list')
   });
 
   function createListOfCandidates (data){
-    data.forEach(function (candidate){
+    data.forEach(function addEachtoUl(candidate){
       $('.list-of-candidates ul')
-        .append('<li>' + candidate + '</li>');
+        .append(
+          '<li>' + candidate.id +
+          '<img src = > + candidate.image_url' +
+          candidate.name +
+          '<button>Delete</button>' +
+          '<button>Update</button>' +
+          '</li>'
+        );
     })
+  }
 
-  };
+
+
+    // <li data-id="' + candidate.id + '">' +
+    //             '<img src="' + candidate.image_url + '">' +
+    //              candidate.name +
+    //              '<button class="deleteThisCandidate">Delete</button>' +
+    //              '<button class="updateAtrCandidate">Update</button>' +
+    //           '</li>'
+    //
+
+
 
   // function
 
