@@ -41,13 +41,13 @@ $('.show-candidate-list')
     window.election.getCandidates();
   });
 
-  function createListOfCandidates (data){
+  function createListOfCandidates (data) {
     data.forEach(function addEachtoUl(candidate){
       $('.list-of-candidates ul')
         .append(
           '<li>' + candidate.id +
-          '<img src = > + candidate.image_url' +
-          candidate.name +
+          '<img src = "' + candidate.image_url + '">  ' +
+          candidate.name + " ( " + "Intelligence: " + candidate.intelligence + ", " + " Charisma: " + candidate.charisma + ", " + " Willpower: " + candidate.willpower + " ) " +
           '<button>Delete</button>' +
           '<button>Update</button>' +
           '</li>'

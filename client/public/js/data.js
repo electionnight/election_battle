@@ -13,7 +13,7 @@
       console.log(data);
       window.election.createListOfCandidates(data);
     })
-    .fail(function(data){
+    .fail(function handleFail(xhr){
       console.log('fail');
     })
   };
@@ -35,7 +35,7 @@
             intelligence: intelligence,
             charisma: charisma,
             willpower: willpower
-            
+
       }),
       headers: {
         'Content-Type': 'application/json'
@@ -44,13 +44,30 @@
     .done( function handleSuccess(data) {
       console.log(data);
     })
-    .fail (function handleFail(xhr, errorType) {
+    .fail (function handleFail(xhr) {
       console.log(xhr);
     });
   };
+
+  function deleteCandidates () {
+    $.ajax({
+      url: '/candidates/:id',
+      method: 'DELETE',
+    })
+    .done(function handleSuccess(data) {
+      console.log(data);
+    })
+    .fail(function handleFail(xhr) {
+      console.log(xhr);
+    });
+  }
+
+
+
 
   // window.election.postCandidate = postCandidate;
 
 window.election.postCandidate = postCandidate;
 window.election.getCandidates = getCandidates;
+window.election.deleteCandidates = deleteCandidates;
 }());
