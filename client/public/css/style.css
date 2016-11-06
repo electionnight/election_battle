@@ -410,7 +410,7 @@ header {
   background-color: #FFFFFF;
   border-bottom-color: red; }
 
-/*h1 {
+h1 {
   text-shadow: 1px 1px 8px #0820ff;
   font-weight: bold;
   font-variant: small-caps;
@@ -443,17 +443,16 @@ h4 {
   font-family: 'Times New Roman', times, serif;
   line-height: 1;
   margin-top: 17px;
-  padding: 0px; }*/
+  padding: 0px; }
 
 h2 {
   font-family: "Courier New", Courier, monospace; }
 
-/*section {
+section {
   display: none; }
 
 section.visible {
   display: block; }
-<<<<<<< HEAD
 
 ul {
   background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Bonnie_Blue_flag_of_the_Confederate_States_of_America.svg/250px-Bonnie_Blue_flag_of_the_Confederate_States_of_America.svg.png");

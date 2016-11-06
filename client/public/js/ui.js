@@ -12,7 +12,7 @@ $('.show-candidate-list')
     event.preventDefault();
     $('.list-of-candidates').addClass('visible');
     $('nav').removeClass('visible');
-    // window.election.toggleVisible($('.list-of-candidates'));
+    window.election.toggleVisible($('.list-of-candidates'));
 
   });
 
@@ -55,15 +55,21 @@ $('.show-candidate-list')
     })
   }
 
+  $('.show-old-campaign')
+    .on('click', function showCampaigns (event) {
+      event.preventDefault();
+    $('.see-old-campaigns').addClass('visible');
+    console.log(yes);
+    });
+
+$('.show-create-campaign')
+  .on('click', function runCampaign (event){
+    event.preventDefault();
+    $('.create-campaign').addClass('visible');
+  });
 
 
-    // <li data-id="' + candidate.id + '">' +
-    //             '<img src="' + candidate.image_url + '">' +
-    //              candidate.name +
-    //              '<button class="deleteThisCandidate">Delete</button>' +
-    //              '<button class="updateAtrCandidate">Update</button>' +
-    //           '</li>'
-    //
+
 
 
 
