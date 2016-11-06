@@ -1,9 +1,42 @@
-nav ul li{
-  display:inline-block;
-}
 section {
-    display: none;
-}
+  display: none; }
+
 section.visible {
-    display: block;
-}
+  display: block; }
+
+ul {
+  background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Bonnie_Blue_flag_of_the_Confederate_States_of_America.svg/250px-Bonnie_Blue_flag_of_the_Confederate_States_of_America.svg.png");
+  background-position: right;
+  list-style-type: none;
+  height: 50px;
+  margin: 0;
+  text-align: center; }
+
+li {
+  float: left; }
+
+ul a {
+  background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Bonnie_Blue_flag_of_the_Confederate_States_of_America.svg/250px-Bonnie_Blue_flag_of_the_Confederate_States_of_America.svg.png");
+  background-repeat: no-repeat;
+  background-position: right;
+  padding-right: 0px;
+  padding-left: 112px;
+  display: block;
+  /*margin-right: 0%;
+  margin-left: 100%;*/
+  width: 100%;
+  line-height: 50px;
+  text-decoration: none;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 21px;
+  color: #006cff;
+  text-shadow: -1px 0 #ffffff, 0 1px #ffffff, 1px 0 #ffffff, 0 -1px #ffffff;
+
+ }
+
+ul a:hover {
+  color: #ffffff;
+  text-shadow: -1px 0 #006cff, 0 1px #006cff, 1px 0 #006cff, 0 -1px #006cff;
+
+
+ }
