@@ -88,7 +88,7 @@ class AppTest < Minitest::Test
     response = get "/campaigns/candidate/#{a.id}"
     payload = JSON.parse(response.body)
 
-    assert_equal Campaign.last.winning_candidate_id, payload
+    assert_equal Campaign.last.id, payload.map{|x| x["id"]}
   end
 
 end
