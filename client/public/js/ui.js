@@ -49,16 +49,19 @@ $('.show-candidate-list')
           '<img src = "' + candidate.image_url + '">  ' +
           candidate.name + " ( " + "Intelligence: " + candidate.intelligence + ", " + " Charisma: " + candidate.charisma + ", " + " Willpower: " + candidate.willpower + " ) " +
           '<button>Delete</button>' +
-          '<button>Update</button>' +
+          // '<button>Update</button>' +
           '</li>'
         );
     })
   }
 
 $('.list-of-candidates ul')
-  .on('click', )
-
-
+  .on('click', 'button', function deleteCandidate (eventObj) {
+    eventObj.preventDefault();
+    $(this).parent.remove();
+    window.election.deleteCandidates();
+    console.log('hello');
+  })
 
 
 
