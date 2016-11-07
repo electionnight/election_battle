@@ -49,6 +49,29 @@
     });
   };
 
+  // function updateCandidate() {
+  //   $.ajax({
+  //     url: '/candidates/:id',
+  //     method: 'PATCH',
+  //     data: JSON.stringify({ name: candidateName,
+  //       image_url: avatar,
+  //       intelligence: intelligence,
+  //       charisma: charisma,
+  //       willpower: willpower
+  //     }),
+  //     headers: {
+  //       'Content-Type': 'application/json'
+  //     }
+  //   })
+  //   .done (function handleSuccess(data) {
+  //     console.log(data);
+  //   })
+  //   .fail (function handleFail(xhr) {
+  //     console.log(xhr);
+  //   })
+  // }
+
+
   function deleteCandidates () {
     $.ajax({
       url: '/candidates/:id',
@@ -69,5 +92,6 @@
 
 window.election.postCandidate = postCandidate;
 window.election.getCandidates = getCandidates;
+// window.election.updateCandidate = updateCandidate;
 window.election.deleteCandidates = deleteCandidates;
 }());
