@@ -15,11 +15,6 @@ class CampaignTest < Minitest::Test
     assert Campaign
   end
 
-  def test_get_all_campaign
-    candidates_all = Campaign.all
-    assert_equal candidates_all, 1
-  end
-
   def test_assigning_winning_candidate_to_campaign
     new_candidate = Candidate.create!(name: "Dude", image_url: "http//", intelligence: 7, charisma: 1, willpower: 6, campaigns_won: 0)
 

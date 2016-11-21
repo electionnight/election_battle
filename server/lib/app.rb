@@ -110,19 +110,19 @@ class App < Sinatra::Base
   #change a specific candidate willpower. the candidate is chosen by id
   patch "/candidate/:id/willpower" do
     content_type "application/json"
-    Candidate.find_by(id: params["id"]).update(willpower: params["update"])
+    Candidate.find_by(id: params["id"]).update(willpower: params["willpower"])
   end
 
   #change a specific candidate charisma. the candidate is chosen by id
   patch "/candidate/:id/charisma" do
     content_type "application/json"
-    Candidate.find_by(id: params["id"]).update(charisma: params["update"])
+    Candidate.find_by(id: params["id"]).update(charisma: params["charisma"])
   end
 
   #change a specific candidate name. the candidate is chosen by id
   patch "/candidate/:id/name" do
     content_type "application/json"
-    Candidate.find_by(id: params["id"]).update(name: params["update"])
+    Candidate.find_by(id: params["id"]).update(name: params["name"])
   end
 
   #change a specific candidate image_url. the candidate is chosen by id
@@ -155,7 +155,6 @@ class App < Sinatra::Base
     content_type "application/json"
     Campaign.where(winning_candidate_id: params["id"]).or(Campaign.where(losing_candidate_id: params["id"])).to_json
   end
-
 
   # If this file is run directly boot the webserver
   run! if app_file == $PROGRAM_NAME

@@ -26,6 +26,19 @@ class AppTest < Minitest::Test
     assert_equal "Chris", Candidate.last.name
   end
 
+  def test_create_candidate_error
+    header "content_type", "application/json"
+
+    payload = {
+
+    }
+
+    post "/candidates", payload.to_json
+    assert_equal 422, last_response.status
+    assert_equal Candidate.last.id, JSON.parse(last_response.body)["id"]
+    assert_equal "Chris", Candidate.last.name
+  end
+
   def test_create_campaign
     header "content_type", "application/json"
     a = Candidate.create!(name: "Alex", image_url: "http//", intelligence: 5, charisma: 6, willpower: 2, campaigns_won: 1)
@@ -49,9 +62,24 @@ class AppTest < Minitest::Test
     assert_equal Candidate.last.name, candidates.last["name"]
   end
 
-  def test_update_candidate
+  def test_update_candidate_intelligence
     patch "/candidate/#{Candidate.last.id}/intelligence", intelligence: 8
     assert_equal 8, Candidate.last["intelligence"]
+  end
+
+  def test_update_candidate_willpower
+    patch "/candidate/#{Candidate.last.id}/willpower", willpower: 6
+    assert_equal 6, Candidate.last["willpower"]
+  end
+
+  def test_update_candidate_charisma
+    patch "/candidate/#{Candidate.last.id}/charisma", charisma: 7
+    assert_equal 7, Candidate.last["charisma"]
+  end
+
+  def test_update_candidate_name
+    patch "/candidate/#{Candidate.last.id}/name", name: "Bob"
+    assert_equal "Bob", Candidate.last["name"]
   end
 
   def test_get_specific_candidate
